@@ -41,7 +41,8 @@ window.flux = {
 			captions: false,
 			width: null,
 			height: null,
-			onTransitionEnd: null
+			onTransitionEnd: null,
+			pauseOnHover: true
 		}, opts);
 
 		// Set the height/width if given [EXPERIMENTAL!]
@@ -253,6 +254,15 @@ window.flux = {
 				});
 
 				this.container.append(this.pagination);
+			}
+
+			// Pause on hover
+			if(this.options.pauseOnHover)
+			{
+				$(this.container).hover(
+					function(){ _this.stop(); },
+					function(){ _this.start(); }
+				)
 			}
 
 			// Resize
